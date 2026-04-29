@@ -1,0 +1,22 @@
+id: reranker
+tool_ids:
+  - proxy-pointer-rag
+card:
+  role: Reranker
+  description: >
+    Reranks deduplicated search hits by hierarchical path relevance using an
+    LLM (gpt-4.1-mini) and returns the top-5 most relevant sections.
+  skills:
+    - LLM reranking
+    - hierarchical path analysis
+    - relevance scoring
+  agent_class: akgentic.agent.BaseAgent
+  config:
+    name: "@Reranker"
+    role: Reranker
+    model_cfg:
+      provider: openai
+      model: gpt-4.1-mini
+      temperature: 0.0
+  routes_to:
+    - "@RagManager"

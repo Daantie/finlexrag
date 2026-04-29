@@ -1,0 +1,16 @@
+id: proxy-pointer-rag
+tool_class: akgentic.tool.vector_store.VectorStoreTool
+tool:
+  name: ProxyPointerRAG
+  description: >
+    Vector store tool for the Proxy-Pointer RAG pipeline.
+    Backed by Qdrant with the proxy_pointer_rag collection.
+    Provides vector search over indexed document chunks with
+    hierarchical-path payloads for the 5-step retrieval/synthesis contract.
+  embedding_model: text-embedding-3-small
+  embedding_provider: openai
+  collection: proxy_pointer_rag
+  backend: qdrant
+  qdrant_url: http://localhost:6333
+  # qdrant_api_key: ""        # set via environment variable for Qdrant Cloud
+  # qdrant_prefer_grpc: false # set to true to use gRPC transport

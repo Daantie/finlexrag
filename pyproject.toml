@@ -16,6 +16,7 @@ dependencies = [
     "akgentic-catalog",
     "akgentic-team",
     "akgentic-infra",
+    "python-dotenv>=1.2.1",
 ]
 
 [tool.uv.sources]
@@ -43,7 +44,7 @@ members = [
 # Shared pytest configuration for all workspace packages
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-testpaths = ["packages/*/tests"]
+testpaths = ["packages/*/tests", "src/tests"]
 python_files = ["test_*.py"]
 addopts = "-v"
 markers = [

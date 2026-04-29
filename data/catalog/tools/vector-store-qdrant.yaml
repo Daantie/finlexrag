@@ -1,0 +1,10 @@
+id: vector-store-qdrant
+tool_class: akgentic.tool.vector_store.VectorStoreTool
+tool:
+  name: VectorStore
+  description: Centralized vector storage and embedding service backed by Qdrant
+  embedding_model: text-embedding-3-small
+  embedding_provider: openai
+  qdrant_url: http://localhost:6333
+  # qdrant_api_key: ""        # set via environment variable for Qdrant Cloud
+  # qdrant_prefer_grpc: false # set to true to use gRPC transport

@@ -1,0 +1,19 @@
+- id: proxy-pointer-rag-team
+  name: Proxy-Pointer RAG Team
+  entry_point: human-proxy
+  members:
+  - agent_id: human-proxy
+  - agent_id: rag-manager
+    members:
+    - agent_id: retriever
+    - agent_id: reranker
+    - agent_id: synthesizer
+  agent_profiles:
+  - retriever
+  - reranker
+  - synthesizer
+  message_types:
+  - akgentic.agent.AgentMessage
+  description: >
+    RAG team implementing the 5-step proxy-pointer retrieval/synthesis pipeline:
+    vector search → dedup → rerank → load sections → synthesize cited answer.

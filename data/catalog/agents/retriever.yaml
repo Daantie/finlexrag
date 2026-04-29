@@ -1,0 +1,23 @@
+id: retriever
+tool_ids:
+  - proxy-pointer-rag
+  - vector-store-qdrant
+card:
+  role: Retriever
+  description: >
+    Performs broad vector search (k=200) against the Qdrant collection
+    and deduplicates results by unique (doc_id, node_id) pointer.
+  skills:
+    - vector search
+    - deduplication
+    - recall optimisation
+  agent_class: akgentic.agent.BaseAgent
+  config:
+    name: "@Retriever"
+    role: Retriever
+    model_cfg:
+      provider: openai
+      model: gpt-4.1-mini
+      temperature: 0.0
+  routes_to:
+    - "@RagManager"

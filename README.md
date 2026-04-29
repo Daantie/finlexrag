@@ -64,6 +64,19 @@ Once both are running:
 - **Web UI** — [http://localhost:4200](http://localhost:4200) — create and interact with agent teams visually
 - **API docs** — [http://localhost:8000/docs](http://localhost:8000/docs) — interactive OpenAPI (Swagger) interface to explore and test all REST endpoints
 
+### Infrastructure (Optional)
+
+For advanced features (Vector Search, persistent Event Store, Redis-backed channels), launch the required infrastructure using Docker Compose:
+
+```bash
+docker compose up -d
+```
+
+This starts:
+- **Qdrant** — [http://localhost:6333](http://localhost:6333) — Vector database for long-term memory
+- **MongoDB** — [localhost:27017](mongodb://localhost:27017) — Persistent storage for teams and catalogs
+- **Redis** — [localhost:6379](redis://localhost:6379) — Pub/sub and runtime cache
+
 By default, the server stores team catalogs in `./data/catalog/` and the event store in `./data/event_store/`. These paths are configurable via the `CommunitySettings` class or environment variables prefixed with `AKGENTIC_`.
 
 ![Akgentic Frontend](akgentic_frontend.png)

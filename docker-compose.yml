@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  # Vector database for long-term memory and retrieval
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: akgentic-qdrant
+    ports:
+      - "6333:6333" # HTTP API & Web UI
+      - "6334:6334" # gRPC API
+    volumes:
+      - ./data/qdrant_storage:/qdrant/storage
+    restart: unless-stopped
+
+  # Persistence for teams and agents (Department/Enterprise tiers)
+  mongodb:
+    image: mongo:6.0
+    container_name: akgentic-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+  # Pub/sub and runtime cache (Department/Enterprise tiers)
+  redis:
+    image: redis:7-alpine
+    container_name: akgentic-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+  redis_data:

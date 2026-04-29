@@ -8,6 +8,13 @@ dist/
 build/
 *.egg-info/
 
+# Data
+data/downloads
+data/documents
+data/event_store
+data/qdrant_storage
+output
+
 # Testing
 .pytest_cache/
 .coverage
